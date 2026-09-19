@@ -28,7 +28,7 @@
         document.querySelector("select").onchange = (e)=> {
             
             document.querySelector("select").readOnly = true;
-            for(let i = 0; i < parseInt(e.value); i++){
+            for(let i = 0; i < parseInt(e.target.value); i++){
                 var dig1 = Math.floor(Math.random()* 10);
                 var dig2 = Math.floor(Math.random()* 10);
                 var dig3 = Math.floor(Math.random()* 10);
