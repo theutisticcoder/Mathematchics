@@ -28,8 +28,10 @@
     </select>
     <div id="set1"><h1>Set 1</h1></div><div id="set2"><h1>Set 2</h1></div>
     <script>
+        alert("Click 2 digits to swap them. make the sums the same, the more numbers the easier. Do as few swaps as possible.")
         var count = 0;
         var val1, e1;
+        var swaps = 0;
         document.querySelector("select").onchange = (e)=> {
             
             document.querySelector("select").disabled= true;
@@ -59,6 +61,7 @@
                         e1.innerHTML = e.target.innerHTML;
                         e.target.innerHTML = val1;
                         recount();
+                        swaps++;
                     }
                 }
             })
@@ -81,7 +84,7 @@
             document.querySelector("#sum1").innerHTML = s1*10 + s2;
             document.querySelector("#sum2").innerHTML = s3*10 + s4;
             if(parseInt(document.querySelector("#sum1").innerHTML) === parseInt(document.querySelector("#sum2").innerHTML)){
-                alert("YOU WON!!!")
+                alert("YOU WON!!! You did it in " + swaps + " moves")
                 window.reload();
             }
         }
