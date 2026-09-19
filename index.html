@@ -11,6 +11,9 @@
         *{
             position: relative;
         }
+        button{
+            font-size:x-large;
+        }
     </style>
     <h1>Select a Level:</h1>
     <select>
@@ -44,7 +47,7 @@
                 b.onclick = (e) => {
                     if(count === 0){
                         count++;
-                        val1 = parseInt(e.target.innerHTML)
+                        val1 = e.target.innerHTML
                         e1 = e.target;
                     }
                     else{
