@@ -67,8 +67,9 @@
                         count--;
                         e1.innerHTML = e.target.innerHTML;
                         e.target.innerHTML = val1;
-                        recount();
+                        
                         swaps++;
+                        recount();
                     }
                 }
             })
@@ -92,7 +93,7 @@
             document.querySelector("#sum2").innerHTML = s3*10 + s4;
             if(parseInt(document.querySelector("#sum1").innerHTML) === parseInt(document.querySelector("#sum2").innerHTML)){
                 alert("YOU WON!!! You did it in " + swaps + " moves")
-                window.reload();
+                location.reload();
             }
         }
     </script>
