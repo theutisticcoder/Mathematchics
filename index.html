@@ -62,16 +62,16 @@
         function recount(){
             var s1 = 0, s2 = 0, s3=0, s4=0;
             document.querySelectorAll(".d1").forEach((dig)=> {
-                s1 += parseInt(dig.value)
+                s1 += parseInt(dig.innerHTML)
             })
             document.querySelectorAll(".d2").forEach((dig)=> {
-                s2 += parseInt(dig.value)
+                s2 += parseInt(dig.innerHTML)
             })
             document.querySelectorAll(".d3").forEach((dig)=> {
-                s3 += parseInt(dig.value)
+                s3 += parseInt(dig.innerHTML)
             })
             document.querySelectorAll(".d4").forEach((dig)=> {
-                s4 += parseInt(dig.value)
+                s4 += parseInt(dig.innerHTML)
             })
             document.querySelector("#sum1").innerHTML = s1*10 + s2;
             document.querySelector("#sum2").innerHTML = s3*10 + s4;
