@@ -37,7 +37,6 @@
             }
             document.querySelector("#set1").innerHTML+= "<button id='sum1'></button>"
             document.querySelector("#set2").innerHTML+= "<button id='sum2'></button>"
-            recount();
             document.querySelectorAll("button").forEach(b=> {
                 b.onclick = (e) => {
                     if(count === 0){
@@ -53,6 +52,7 @@
                     }
                 }
             })
+            setTimeout(recount, 200)
         }
         function recount(){
             var s1 = 0, s2 = 0, s3=0, s4=0;
