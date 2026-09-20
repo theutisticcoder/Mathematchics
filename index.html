@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathematchics</title>
 </head>
+
 <body>
     <style>
-        button{
+        button {
             font-size: large;
             color: white;
             background: black;
             width: 30px;
             border-radius: 20%;
         }
-        #set1{
+
+        #set1 {
             position: absolute;
-            top:200px;
+            top: 200px;
         }
-        #set2{
+
+        #set2 {
             position: absolute;
             left: 200px;
-            top:200px
+            top: 200px
         }
-        #inst{
+
+        #inst {
             width: 250px;
             overflow-x: auto;
             position: relative;
 
         }
-        select{
-            top:170px;
+
+        select {
+            top: 170px;
             position: absolute;
         }
-     
     </style>
-        <div id="inst"><h3> Instructions</h3><p> There are two sets of dohble digit numbers. Click any 2 single digits to swap them. Goal: make the sums the same, the more numbers the easier. Do as few swaps as possible.
-        </p></div>
+    <div id="inst">
+        <h3> Instructions</h3>
+        <p> There are two sets of dohble digit numbers. Click any 2 single digits to swap them. Goal: make the sums the
+            same, the more numbers the easier. Do as few swaps as possible.
+        </p>
+    </div>
 
     <select>
         <option>Select A Level...</option>
@@ -44,42 +53,50 @@
         <option value="12">12th Degree</option>
         <option value="16">16th Degree</option>
     </select>
-    <div id="set1"><h1>Set 1</h1></div><div id="set2"><h1>Set 2</h1></div><br>
+    <div id="set1">
+        <h1>Set 1</h1>
+    </div>
+    <div id="set2">
+        <h1>Set 2</h1>
+    </div><br>
 
 
     <script>
         var count = 0;
         var val1, e1;
         var swaps = 0;
-        document.querySelector("select").onchange = (e)=> {
-            
-            document.querySelector("select").disabled= true;
-            for(let i = 0; i < parseInt(e.target.value); i++){
-                var dig1 = Math.floor(Math.random()* 10);
-                var dig2 = Math.floor(Math.random()* 10);
-                var dig3 = Math.floor(Math.random()* 10);
-                var dig4 = Math.floor(Math.random()* 10);
-                document.querySelector("#set1").innerHTML+= "<button class='d1'>"+ dig1 +"</button>"
-                document.querySelector("#set1").innerHTML+= "<button class='d2'>"+ dig2 +"</button>"
-                document.querySelector("#set1").innerHTML+= "<br>"
-                document.querySelector("#set2").innerHTML+= "<button class='d3'>"+ dig3 +"</button>"
-                document.querySelector("#set2").innerHTML+= "<button class='d4'>"+ dig4 +"</button>"
-                document.querySelector("#set2").innerHTML+= "<br>"
+        var date = Date.now().toISOString().split("T")[0];
+        let hash = 0;
+        for (let i = 0; i < today.length; i++) {
+            hash = date.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        var result = Math.abs(hash) % (9 * 10 ** (4*parseInt(e.target.value)) + 1) + 10 ** (4*parseInt(e.target.value))
+        result = result.toString();
+        document.querySelector("select").onchange = (e) => {
+
+            document.querySelector("select").disabled = true;
+            for (let i = 0; i < parseInt(e.target.value); i++) {
+                document.querySelector("#set1").innerHTML += "<button class='d1'>" + result.substring(i*8, i*8+1) + "</button>"
+                document.querySelector("#set1").innerHTML += "<button class='d2'>" + result.substring(i*8+2, i*8+3) + "</button>"
+                document.querySelector("#set1").innerHTML += "<br>"
+                document.querySelector("#set2").innerHTML += "<button class='d3'>" + result.substring(i*8+4, i*8+5) + "</button>"
+                document.querySelector("#set2").innerHTML += "<button class='d4'>" + result.substring(i*8+6, i*8+7) + "</button>"
+                document.querySelector("#set2").innerHTML += "<br>"
             }
-            document.querySelector("#set1").innerHTML+= "<h1 id='sum1'></h1>"
-            document.querySelector("#set2").innerHTML+= "<h1 id='sum2'></h1>"
-            document.querySelectorAll("button").forEach(b=> {
+            document.querySelector("#set1").innerHTML += "<h1 id='sum1'></h1>"
+            document.querySelector("#set2").innerHTML += "<h1 id='sum2'></h1>"
+            document.querySelectorAll("button").forEach(b => {
                 b.onclick = (e) => {
-                    if(count === 0){
+                    if (count === 0) {
                         count++;
                         val1 = e.target.innerHTML
                         e1 = e.target;
                     }
-                    else{
+                    else {
                         count--;
                         e1.innerHTML = e.target.innerHTML;
                         e.target.innerHTML = val1;
-                        
+
                         swaps++;
                         recount();
                     }
@@ -87,29 +104,30 @@
             })
             setTimeout(recount, 200)
         }
-        function recount(){
-            var s1 = 0, s2 = 0, s3=0, s4=0;
-            document.querySelectorAll(".d1").forEach((dig)=> {
+        function recount() {
+            var s1 = 0, s2 = 0, s3 = 0, s4 = 0;
+            document.querySelectorAll(".d1").forEach((dig) => {
                 s1 += parseInt(dig.innerHTML)
             })
-            document.querySelectorAll(".d2").forEach((dig)=> {
+            document.querySelectorAll(".d2").forEach((dig) => {
                 s2 += parseInt(dig.innerHTML)
             })
-            document.querySelectorAll(".d3").forEach((dig)=> {
+            document.querySelectorAll(".d3").forEach((dig) => {
                 s3 += parseInt(dig.innerHTML)
             })
-            document.querySelectorAll(".d4").forEach((dig)=> {
+            document.querySelectorAll(".d4").forEach((dig) => {
                 s4 += parseInt(dig.innerHTML)
             })
-            document.querySelector("#sum1").innerHTML = s1*10 + s2;
-            document.querySelector("#sum2").innerHTML = s3*10 + s4;
-            if(parseInt(document.querySelector("#sum1").innerHTML) === parseInt(document.querySelector("#sum2").innerHTML)){
-                setTimeout(()=>{ 
+            document.querySelector("#sum1").innerHTML = s1 * 10 + s2;
+            document.querySelector("#sum2").innerHTML = s3 * 10 + s4;
+            if (parseInt(document.querySelector("#sum1").innerHTML) === parseInt(document.querySelector("#sum2").innerHTML)) {
+                setTimeout(() => {
                     alert("YOU WON!!! You did it in " + swaps + " moves")
                     location.reload()
-                },1000)
+                }, 1000)
             }
         }
     </script>
 </body>
+
 </html>
