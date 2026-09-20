@@ -80,7 +80,7 @@
             console.log(hash)
             var rnd = new Math.seedrandom(date);
             var result = Math.floor(rnd() * (9 * 10 ** (4 * parseInt(e.target.value)))) + 10 ** (4 * parseInt(e.target.value))
-            result = result.toString();
+            result = BigInt(result).toString();
             console.log(result)
             document.querySelector("select").disabled = true;
             for (let i = 0; i < parseInt(e.target.value); i++) {
