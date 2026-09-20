@@ -46,10 +46,11 @@
         }
         #swaps{
             width: 30vw;
-            position: relative;
             text-align: center;
-            top:auto;
             left: 35vw;
+            color: navy;
+            top: -3.5vh;
+            position: absolute;
         }
         #set2 {
             text-align: center;
@@ -110,6 +111,7 @@
         <option class="16" value="16">16th Degree</option>
     </select>
     <div id="game">
+        <h4 id="swaps">Swaps: 0</h4>
         <div id="set1">
             <h1>Set 1</h1>
         </div>
@@ -211,7 +213,6 @@
                 }
                 document.querySelector("#set1").innerHTML += "<h1 id='sum1'></h1>"
                 document.querySelector("#set2").innerHTML += "<h1 id='sum2'></h1>"
-                document.querySelector("#game").innerHTML += "<h1 id='swaps'>Swaps: </h1>"
                 document.querySelectorAll("button").forEach(b => {
                     b.onclick = (e) => {
                         if (count === 0) {
