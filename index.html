@@ -79,28 +79,82 @@
         document.querySelector("select").onchange = (e) => {
             if (localStorage.getItem("pos8") != undefined && localStorage.getItem("pos8") != "D" && e.target.value === "8") {
                 document.querySelector("#game").innerHTML = localStorage.getItem("pos8")
+                 document.querySelectorAll("button").forEach(b => {
+                    b.onclick = (e) => {
+                        if (count === 0) {
+                            count++;
+                            val1 = e.target.innerHTML
+                            e1 = e.target;
+                        }
+                        else {
+                            count--;
+                            e1.innerHTML = e.target.innerHTML;
+                            e.target.innerHTML = val1;
+
+                            swaps++;
+                            recount();
+                        }
+                    }
+                })
             }
             else if (localStorage.getItem("pos12") != undefined && localStorage.getItem("pos12") != "D" && e.target.value === "12") {
                 document.querySelector("#game").innerHTML = localStorage.getItem("pos12")
+                 document.querySelectorAll("button").forEach(b => {
+                    b.onclick = (e) => {
+                        if (count === 0) {
+                            count++;
+                            val1 = e.target.innerHTML
+                            e1 = e.target;
+                        }
+                        else {
+                            count--;
+                            e1.innerHTML = e.target.innerHTML;
+                            e.target.innerHTML = val1;
+
+                            swaps++;
+                            recount();
+                        }
+                    }
+                })
             }
             else if (localStorage.getItem("pos16") != undefined && localStorage.getItem("pos16") != "D" && e.target.value === "16") {
                 document.querySelector("#game").innerHTML = localStorage.getItem("pos16")
+                 document.querySelectorAll("button").forEach(b => {
+                    b.onclick = (e) => {
+                        if (count === 0) {
+                            count++;
+                            val1 = e.target.innerHTML
+                            e1 = e.target;
+                        }
+                        else {
+                            count--;
+                            e1.innerHTML = e.target.innerHTML;
+                            e.target.innerHTML = val1;
+
+                            swaps++;
+                            recount();
+                        }
+                    }
+                })
             }
             else if (localStorage.getItem("pos8") != undefined && localStorage.getItem("pos8") === "D" && e.target.value === "8") {
-                document.querySelector("#sum1").backgroundColor = "green";
-                document.querySelector("#sum2").backgroundColor = "green";
+                 document.querySelector("#game").innerHTML = localStorage.getItem("pos8")
+               document.querySelector("#sum1").style.backgroundColor = "green";
+                document.querySelector("#sum2").style.backgroundColor = "green";
                 document.querySelector("set1").children.forEach(b => b.disabled = true)
                 document.querySelector("set2").children.forEach(b => b.disabled = true)
             }
             else if (localStorage.getItem("pos12") != undefined && localStorage.getItem("pos12") === "D" && e.target.value === "12") {
-                document.querySelector("#sum1").backgroundColor = "green";
-                document.querySelector("#sum2").backgroundColor = "green";
+                 document.querySelector("#game").innerHTML = localStorage.getItem("pos12")
+               document.querySelector("#sum1").style.backgroundColor = "green";
+                document.querySelector("#sum2").style.backgroundColor = "green";
                 document.querySelector("set1").children.forEach(b => b.disabled = true)
                 document.querySelector("set2").children.forEach(b => b.disabled = true)
             }
             else if (localStorage.getItem("pos16") != undefined && localStorage.getItem("pos16") === "D" && e.target.value === "16") {
-                document.querySelector("#sum1").backgroundColor = "green";
-                document.querySelector("#sum2").backgroundColor = "green";
+                document.querySelector("#game").innerHTML = localStorage.getItem("pos16")
+                document.querySelector("#sum1").style.backgroundColor = "green";
+                document.querySelector("#sum2").style.backgroundColor = "green";
                 document.querySelector("set1").children.forEach(b => b.disabled = true)
                 document.querySelector("set2").children.forEach(b => b.disabled = true)
             }
@@ -164,8 +218,8 @@
             document.querySelector("#sum2").innerHTML = s3 * 10 + s4;
             localStorage.setItem("pos" + document.querySelector("select").value, document.querySelector("#game").innerHTML)
             if (parseInt(document.querySelector("#sum1").innerHTML) === parseInt(document.querySelector("#sum2").innerHTML)) {
-                document.querySelector("#sum1").backgroundColor = "green";
-                document.querySelector("#sum2").backgroundColor = "green";
+                document.querySelector("#sum1").style.backgroundColor = "green";
+                document.querySelector("#sum2").style.backgroundColor = "green";
                 localStorage.setItem("pos" + document.querySelector("select").value, "D")
             }
         }
