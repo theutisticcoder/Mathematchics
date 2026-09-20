@@ -65,22 +65,25 @@
         var count = 0;
         var val1, e1;
         var swaps = 0;
-        var date = Date.now().toISOString().split("T")[0];
+        var date = Date.now();
         let hash = 0;
-        for (let i = 0; i < today.length; i++) {
-            hash = date.charCodeAt(i) + ((hash << 5) - hash);
-        }
-        var result = Math.abs(hash) % (9 * 10 ** (4*parseInt(e.target.value)) + 1) + 10 ** (4*parseInt(e.target.value))
-        result = result.toString();
         document.querySelector("select").onchange = (e) => {
 
+            for (let i = 0; i < date.length; i++) {
+                hash = date.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            console.log(hash)
+            var result = Math.abs(hash) % (9 * 10 ** (4 * parseInt(e.target.value)) + 1) + 10 ** (4 * parseInt(e.target.value))
+            
+            result = result.toLocaleString('en-US', { useGrouping: false });
+            console.log(result)
             document.querySelector("select").disabled = true;
             for (let i = 0; i < parseInt(e.target.value); i++) {
-                document.querySelector("#set1").innerHTML += "<button class='d1'>" + result.substring(i*8, i*8+1) + "</button>"
-                document.querySelector("#set1").innerHTML += "<button class='d2'>" + result.substring(i*8+2, i*8+3) + "</button>"
+                document.querySelector("#set1").innerHTML += "<button class='d1'>" + result.substring(i * 8, i * 8 + 1) + "</button>"
+                document.querySelector("#set1").innerHTML += "<button class='d2'>" + result.substring(i * 8 + 2, i * 8 + 3) + "</button>"
                 document.querySelector("#set1").innerHTML += "<br>"
-                document.querySelector("#set2").innerHTML += "<button class='d3'>" + result.substring(i*8+4, i*8+5) + "</button>"
-                document.querySelector("#set2").innerHTML += "<button class='d4'>" + result.substring(i*8+6, i*8+7) + "</button>"
+                document.querySelector("#set2").innerHTML += "<button class='d3'>" + result.substring(i * 8 + 4, i * 8 + 5) + "</button>"
+                document.querySelector("#set2").innerHTML += "<button class='d4'>" + result.substring(i * 8 + 6, i * 8 + 7) + "</button>"
                 document.querySelector("#set2").innerHTML += "<br>"
             }
             document.querySelector("#set1").innerHTML += "<h1 id='sum1'></h1>"
