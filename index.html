@@ -77,8 +77,8 @@
 
 
         document.querySelector("select").onchange = (e) => {
-            document.querySelector("#set1").innerHTML = ""
-            document.querySelector("#set2").innerHTML = ""
+            document.querySelector("#set1").innerHTML = "<h1>Set 1</h1>";
+            document.querySelector("#set2").innerHTML = "<h1>Set 2</h1>";
 
             if (localStorage.getItem("pos8") != undefined && localStorage.getItem("pos8") != "D" && e.target.value === "8") {
                 document.querySelector("#game").innerHTML = localStorage.getItem("pos8")
