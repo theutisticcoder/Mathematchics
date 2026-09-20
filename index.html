@@ -11,40 +11,79 @@
 
 <body>
     <style>
-        button {
-            font-size: large;
-            color: white;
-            background: black;
+        *{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        html{
+            background-color: lightblue;
+        }
+        button{
             width: 30px;
             border-radius: 20%;
+            color: maroon;
+            font-size: large;
+            background: lightblue;
+            border: 3px solid maroon;
         }
 
         #set1 {
+            width: 20vw;
+            color: maroon;
+            background: lightblue;
+            border: 3px solid maroon;
             position: absolute;
-            top: 200px;
+             border-radius: 10%;
+           top: 200px;
+            left: 30vw;
+            height: fit-content;
         }
 
         #set2 {
             position: absolute;
-            left: 200px;
-            top: 200px
+            width: 20vw;
+            color: maroon;
+            border-radius: 10%;
+            background: lightblue;
+            border: 3px solid maroon;
+            left: 50vw;
+            top: 200px;
+            height: fit-content;
         }
 
         #inst {
-            width: 250px;
+            width: 50vw;
+             height: fit-content;            
+             color: maroon;
+            background: lightblue;
+            border: 3px solid maroon;
             overflow-x: auto;
-            position: relative;
-
-        }
+            left: 25vw;
+            position: absolute;
+            border-radius: 10%;
+       }
 
         select {
+            height: fit-content;
+            color: maroon;
+            background: lightblue;
+            border: 3px solid maroon;
             top: 170px;
+            width: 40vw;
+            left: 30vw;
             position: absolute;
+            border-radius: 10%;
+        }
+        option{
+             height: fit-content;
+            color: maroon;
+            background: lightblue;
+            border: 3px solid maroon;
+            border-radius: 10%;
         }
     </style>
     <div id="inst">
         <h3> Instructions</h3>
-        <p> There are two sets of dohble digit numbers. Click any 2 single digits to swap them. Goal: make the sums the
+        <p> There are two sets of double digit numbers. Click any 2 single digits to swap them. Goal: make the sums the
             same, the more numbers the easier. Do as few swaps as possible.
         </p>
     </div>
@@ -72,10 +111,7 @@
         var swaps = 0;
         var date = new Date();
         date = date.toISOString().split("T")[0];
-        let hash = 0;
-
-
-
+        let hash = 0; 
         document.querySelector("select").onchange = (e) => {
             document.querySelector("#set1").innerHTML = "<h1>Set 1</h1>";
             document.querySelector("#set2").innerHTML = "<h1>Set 2</h1>";
@@ -200,7 +236,7 @@
             if (parseInt(document.querySelector("#sum1").innerHTML) === parseInt(document.querySelector("#sum2").innerHTML)) {
                 document.querySelector("#sum1").style.backgroundColor = "green";
                 document.querySelector("#sum2").style.backgroundColor = "green";
-                 document.querySelectorAll("button").forEach(b => b.disabled = true)
+                document.querySelectorAll("button").forEach(b => b.disabled = true)
             }
             localStorage.setItem("pos" + document.querySelector("select").value, document.querySelector("#game").innerHTML)
 
