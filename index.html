@@ -237,6 +237,9 @@
             if (parseInt(document.querySelector("#sum1").innerHTML) === parseInt(document.querySelector("#sum2").innerHTML)) {
                 document.querySelector("#sum1").style.backgroundColor = "green";
                 document.querySelector("#sum2").style.backgroundColor = "green";
+
+                document.querySelector("#sum1").style.color = "white";
+                document.querySelector("#sum2").style.color = "white";
                 document.querySelectorAll("button").forEach(b => b.disabled = true)
             }
             localStorage.setItem("pos" + document.querySelector("select").value, document.querySelector("#game").innerHTML)
