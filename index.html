@@ -159,7 +159,7 @@
                             e1.innerHTML = e.target.innerHTML;
                             e.target.innerHTML = val1;
 
-                            swaps++;
+                            
                             recount();
                         }
                     }
@@ -179,7 +179,7 @@
                             e1.innerHTML = e.target.innerHTML;
                             e.target.innerHTML = val1;
 
-                            swaps++;
+                            
                             recount();
                         }
                     }
@@ -199,7 +199,7 @@
                             e1.innerHTML = e.target.innerHTML;
                             e.target.innerHTML = val1;
 
-                            swaps++;
+                            
                             recount();
                         }
                     }
@@ -240,7 +240,7 @@
                             e1.innerHTML = e.target.innerHTML;
                             e.target.innerHTML = val1;
 
-                            swaps++;
+                            
                             recount();
                         }
                     }
@@ -284,6 +284,7 @@
 
                 document.querySelector("#sum1").style.color = "white";
                 document.querySelector("#sum2").style.color = "white";
+                swaps++;
                 document.querySelector("#swaps").innerHTML = "Swaps: " + swaps;
                 document.querySelectorAll("button").forEach(b => b.disabled = true)
             }
