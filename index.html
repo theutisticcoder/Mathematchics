@@ -78,7 +78,7 @@
                 hash = date.charCodeAt(i) + ((hash << 5) - hash);
             }
             console.log(hash)
-            var rnd = Math.seedrandom(date);
+            var rnd = new Math.seedrandom(date);
             var result = Math.floor(rnd() * (9 * 10 ** (4 * parseInt(e.target.value)))) + 10 ** (4 * parseInt(e.target.value))
             result = result.toString();
             console.log(result)
