@@ -139,6 +139,7 @@
         date = date.toISOString().split("T")[0];
         let hash = 0;
         document.querySelector("select").onchange = (e) => {
+            swaps = 0
             document.querySelector("#set1").innerHTML = "<h1>Set 1</h1>";
             document.querySelector("#set2").innerHTML = "<h1>Set 2</h1>";
 
