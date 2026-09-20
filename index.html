@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathematchics</title>
+    <script src="https://cdn.jsdelivr.net/npm/seedrandom@3.0.5/seedrandom.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/seedrandom@3.0.5/coverage/lcov-report/prettify.min.css">
 </head>
 
 <body>
@@ -65,17 +67,20 @@
         var count = 0;
         var val1, e1;
         var swaps = 0;
-        var date = new Date.getTime();
+        var date = new Date();
+        date = date.toISOString().split("T")[0];
         let hash = 0;
+        
+
         document.querySelector("select").onchange = (e) => {
 
             for (let i = 0; i < date.length; i++) {
                 hash = date.charCodeAt(i) + ((hash << 5) - hash);
             }
             console.log(hash)
-            var result = Math.abs(hash) % (9 * 10 ** (4 * parseInt(e.target.value)) + 1) + 10 ** (4 * parseInt(e.target.value))
-            
-            result = result.toLocaleString('en-US', { useGrouping: false });
+            var rnd = Math.seedrandom(date);
+            var result = Math.floor(rnd() * (9 * 10 ** (4 * parseInt(e.target.value)))) + 10 ** (4 * parseInt(e.target.value))
+            result = result.toString();
             console.log(result)
             document.querySelector("select").disabled = true;
             for (let i = 0; i < parseInt(e.target.value); i++) {
