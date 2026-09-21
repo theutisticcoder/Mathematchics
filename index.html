@@ -136,7 +136,7 @@
         var swaps = 0;
         var date = new Date();
         date = date.toISOString().split("T")[0];
-        let hash = 0;
+        alert(date);
         var rng = new Math.seedrandom(date) 
         document.querySelector("select").onchange = (e) => {
             swaps = 0;
@@ -206,10 +206,7 @@
                 })
             }
             else {
-                for (let i = 0; i < date.length; i++) {
-                    hash = date.charCodeAt(i) + ((hash << 5) - hash);
-                }
-                console.log(hash)
+                
                 
                 var result = Math.floor( rng()* (9 * 10 ** (16 * parseInt(e.target.value)))) + 10 ** (16 * parseInt(e.target.value))
                 result = BigInt(result).toString();
