@@ -156,8 +156,8 @@
             document.querySelector("#set1").innerHTML = "<h1>Set 1</h1>";
             document.querySelector("#set2").innerHTML = "<h1>Set 2</h1>";
 
-            if (localStorage.getItem("pos8") != undefined && localStorage.getItem("pos8") != "D" && e.target.value === "8") {
-                document.querySelector("#board").innerHTML = localStorage.getItem("pos8")
+            if (localStorage.getItem("moneypos8") != undefined && localStorage.getItem("moneypos8") != "D" && e.target.value === "8") {
+                document.querySelector("#board").innerHTML = localStorage.getItem("moneypos8")
                 document.querySelectorAll("button").forEach(b => {
                     b.onclick = (e) => {
                         if (count === 0) {
@@ -176,8 +176,8 @@
                     }
                 })
             }
-            else if (localStorage.getItem("pos12") != undefined && localStorage.getItem("pos12") != "D" && e.target.value === "12") {
-                document.querySelector("#board").innerHTML = localStorage.getItem("pos12")
+            else if (localStorage.getItem("moneypos12") != undefined && localStorage.getItem("moneypos12") != "D" && e.target.value === "12") {
+                document.querySelector("#board").innerHTML = localStorage.getItem("moneypos12")
                 document.querySelectorAll("button").forEach(b => {
                     b.onclick = (e) => {
                         if (count === 0) {
@@ -197,8 +197,8 @@
                 })
             }
 
-            else if (localStorage.getItem("pos16") != undefined && localStorage.getItem("pos16") != "D" && e.target.value === "16") {
-                document.querySelector("#board").innerHTML = localStorage.getItem("pos16")
+            else if (localStorage.getItem("moneypos16") != undefined && localStorage.getItem("moneypos16") != "D" && e.target.value === "16") {
+                document.querySelector("#board").innerHTML = localStorage.getItem("moneypos16")
                 document.querySelectorAll("button").forEach(b => {
                     b.onclick = (e) => {
                         if (count === 0) {
@@ -291,7 +291,7 @@
             document.querySelector("#sum2").innerHTML = s5 * 1000 + s6 * 100 + s7 * 10 + s8;
             swaps++;
             document.querySelector("#swaps").innerHTML = "Swaps: " + swaps;
-            localStorage.setItem("pos" + document.querySelector("select").value, document.querySelector("#board").innerHTML)
+            localStorage.setItem("moneypos" + document.querySelector("select").value, document.querySelector("#board").innerHTML)
 
         }
     </script>
