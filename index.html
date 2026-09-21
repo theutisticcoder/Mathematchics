@@ -43,9 +43,12 @@
             position: absolute;
             border-radius: 10%;
             top: 300px;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
             height: fit-content;
-            transform: translateX(25%);
-    }
+        }
 
         #sum1,
         #sum2,
@@ -66,7 +69,10 @@
             border-radius: 10%;
             background: aliceblue;
             border: 3px solid navy;
-            transform: translateX(75%);
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
             top: 300px;
             height: fit-content;
         }
@@ -101,7 +107,8 @@
             border: 3px solid navy;
             border-radius: 10%;
         }
-        #board{
+
+        #board {
             position: relative;
         }
     </style>
@@ -144,7 +151,7 @@
         var date = new Date();
         date = date.toLocaleDateString();
         var rng = new Math.seedrandom(date)
-        if(localStorage.getItem('d') != date){
+        if (localStorage.getItem('d') != date) {
             localStorage.clear();
             localStorage.setItem("d", date)
         }
