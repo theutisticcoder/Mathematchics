@@ -102,17 +102,16 @@
             border: 3px solid darkslategray;
             border-radius: 10%;
         }
-        #board{
+
+        #board {
             width: 100%;
             position: relative;
         }
-        .money{
+
+        .money {
             background: transparent;
             border: transparent;
         }
-          
-            
-        
     </style>
 
 
@@ -129,7 +128,7 @@
                 <option class="12" value="12">12th Degree</option>
                 <option class="16" value="16">16th Degree</option>
             </select>
-            <h4 id="swaps">Swaps: 0</h4>
+            <h4 id="swaps">Swaps Left: 0</h4>
 
         </div>
         <div id="board">
@@ -149,17 +148,20 @@
     <script>
         var count = 0;
         var val1, e1;
-        var swaps = -1;
+        var swaps = 15;
         var date = new Date();
         date = date.toLocaleDateString();
         var rng = new Math.seedrandom(date)
-        if(localStorage.getItem('d') != date){
+        if (localStorage.getItem('d') != date) {
             localStorage.clear();
             localStorage.setItem("d", date)
         }
+
         document.querySelector("select").onchange = (e) => {
-            swaps = -1;
-            document.querySelector("#swaps").innerHTML = "Swaps: " + swaps;
+            if (localStorage.getItem('swaps')) {
+                swaps = parseInt(localStorage.getItem("swaps"));
+            } 
+            document.querySelector("#swaps").innerHTML = "Swaps Left: " + swaps;
             document.querySelector("#set1").innerHTML = "<h1>Set 1</h1>";
             document.querySelector("#set2").innerHTML = "<h1>Set 2</h1>";
 
@@ -296,8 +298,11 @@
 
             document.querySelector("#sum1").innerHTML = s1 * 1000 + s2 * 100 + s3 * 10 + s4;
             document.querySelector("#sum2").innerHTML = s5 * 1000 + s6 * 100 + s7 * 10 + s8;
-            swaps++;
-            document.querySelector("#swaps").innerHTML = "Swaps: " + swaps;
+            swaps--;
+            if(swaps === 0){
+                document.querySelectorAll("button").forEach(b=>b.disabled = true);
+            }
+            document.querySelector("#swaps").innerHTML = "Swaps Left: " + swaps;
             localStorage.setItem("moneypos" + document.querySelector("select").value, document.querySelector("#board").innerHTML)
 
         }
