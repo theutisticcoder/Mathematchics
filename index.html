@@ -207,7 +207,7 @@
             else {
                 
                 
-                var result =  Math.floor(Bigint(Math.abs(rng.int32())/2147483647) * BigInt(9n * 10n ** BigInt(16 * parseInt(e.target.value)))) + BigInt(10n ** BigInt(16 * parseInt(e.target.value)))
+                var result =  Math.floor(BigInt(Math.abs(rng.int32())/2147483647) * BigInt(9n * 10n ** BigInt(16 * parseInt(e.target.value)))) + BigInt(10n ** BigInt(16 * parseInt(e.target.value)))
                 result = result.toString();
                 console.log(result)
                 for (let i = 0; i < parseInt(e.target.value); i++) {
