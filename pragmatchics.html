@@ -155,7 +155,7 @@
             localStorage.setItem("d", date)
         }
         document.querySelector("select").onchange = (e) => {
-            swaps = 0;
+            swaps = -1;
             document.querySelector("#swaps").innerHTML = "Swaps: " + swaps;
             document.querySelector("#set1").innerHTML = "<h1>Set 1</h1>";
             document.querySelector("#set2").innerHTML = "<h1>Set 2</h1>";
