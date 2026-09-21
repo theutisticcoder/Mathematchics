@@ -224,11 +224,13 @@
                 var result = ((totalRange * BigInt(Math.abs(rng.int32()))) / 2147483647n + 10n ** BigInt(16 * parseInt(e.target.value))).toString();
                 console.log(result)
                 for (let i = 0; i < parseInt(e.target.value); i++) {
+                    document.querySelector("#set1").innerHTML += "<button disabled='true'>$</button>"
                     document.querySelector("#set1").innerHTML += "<button class='d1'>" + result.substring(i * 16, i * 16 + 1) + "</button>"
                     document.querySelector("#set1").innerHTML += "<button class='d2'>" + result.substring(i * 16 + 2, i * 16 + 3) + "</button>"
                     document.querySelector("#set1").innerHTML += "<button class='d3'>" + result.substring(i * 16 + 4, i * 16 + 5) + "</button>"
                     document.querySelector("#set1").innerHTML += "<button class='d4'>" + result.substring(i * 16 + 6, i * 16 + 7) + "</button>"
                     document.querySelector("#set1").innerHTML += "<br>"
+                    document.querySelector("#set2").innerHTML += "<button disabled='true'>$</button>"
                     document.querySelector("#set2").innerHTML += "<button class='d5'>" + result.substring(i * 16 + 8, i * 16 + 9) + "</button>"
                     document.querySelector("#set2").innerHTML += "<button class='d6'>" + result.substring(i * 16 + 10, i * 16 + 11) + "</button>"
                     document.querySelector("#set2").innerHTML += "<button class='d7'>" + result.substring(i * 16 + 12, i * 16 + 13) + "</button>"
