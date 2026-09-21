@@ -207,7 +207,7 @@
             else {
                 
                 
-                var result = BigInt(Math.floor( BigInt(rng.int32()) * BigInt(9 * 10 ** (16 * parseInt(e.target.value)))) + BigInt(10 ** (16 * parseInt(e.target.value))))
+                var result = BigInt( BigInt(rng.int32()) * BigInt(9 * 10 ** (16 * parseInt(e.target.value))) + BigInt(10 ** (16 * parseInt(e.target.value))))
                 result = result.toString();
                 console.log(result)
                 for (let i = 0; i < parseInt(e.target.value); i++) {
