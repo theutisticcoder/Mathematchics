@@ -136,8 +136,12 @@
         var val1, e1;
         var swaps = 0;
         var date = new Date();
-        date = date.toISOString().split("T")[0];
+        date = date.toLocaleDateString();
         var rng = new Math.seedrandom(date)
+        if(localStorage.getItem('d') != date){
+            localStorage.clear();
+            localStorage.setItem("d", date)
+        }
         document.querySelector("select").onchange = (e) => {
             swaps = 0;
             document.querySelector("#swaps").innerHTML = "Swaps: " + swaps;
