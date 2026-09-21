@@ -121,12 +121,15 @@
             <h4 id="swaps">Swaps: 0</h4>
 
         </div>
+        <div id="board">
         <div id="set1">
             <h1>Set 1</h1>
         </div>
         <div id="set2">
             <h1>Set 2</h1>
         </div><br>
+        </div>
+       
     </div>
 
 
@@ -146,7 +149,7 @@
             document.querySelector("#set2").innerHTML = "<h1>Set 2</h1>";
 
             if (localStorage.getItem("pos8") != undefined && localStorage.getItem("pos8") != "D" && e.target.value === "8") {
-                document.querySelector("#game").innerHTML = localStorage.getItem("pos8")
+                document.querySelector("#board").innerHTML = localStorage.getItem("pos8")
                 document.querySelectorAll("button").forEach(b => {
                     b.onclick = (e) => {
                         if (count === 0) {
@@ -166,7 +169,7 @@
                 })
             }
             else if (localStorage.getItem("pos12") != undefined && localStorage.getItem("pos12") != "D" && e.target.value === "12") {
-                document.querySelector("#game").innerHTML = localStorage.getItem("pos12")
+                document.querySelector("#board").innerHTML = localStorage.getItem("pos12")
                 document.querySelectorAll("button").forEach(b => {
                     b.onclick = (e) => {
                         if (count === 0) {
@@ -186,7 +189,7 @@
                 })
             }
             else if (localStorage.getItem("pos16") != undefined && localStorage.getItem("pos16") != "D" && e.target.value === "16") {
-                document.querySelector("#game").innerHTML = localStorage.getItem("pos16")
+                document.querySelector("#board").innerHTML = localStorage.getItem("pos16")
                 document.querySelectorAll("button").forEach(b => {
                     b.onclick = (e) => {
                         if (count === 0) {
@@ -288,7 +291,7 @@
                 document.querySelector("#sum2").style.color = "white";
                 document.querySelectorAll("button").forEach(b => b.disabled = true)
             }
-            localStorage.setItem("pos" + document.querySelector("select").value, document.querySelector("#game").innerHTML)
+            localStorage.setItem("pos" + document.querySelector("select").value, document.querySelector("#board").innerHTML)
 
         }
     </script>
