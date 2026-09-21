@@ -161,7 +161,7 @@
             if (localStorage.getItem('swaps' + e.target.value)) {
                 swaps = parseInt(localStorage.getItem("swaps" + e.target.value));
             }
-            else{
+            else {
                 swaps = 16
             }
             document.querySelector("#swaps").innerHTML = "Swaps Left: " + swaps;
@@ -311,6 +311,10 @@
                     document.querySelector("#sum1").style.color = "white";
                     document.querySelector("#sum2").style.color = "white";
 
+                }
+                else {
+                    document.querySelector("#sum1").style.backgroundColor = "green";
+                    document.querySelector("#sum2").style.backgroundColor = "green";
                 }
             }
             document.querySelector("#swaps").innerHTML = "Swaps Left: " + swaps;
