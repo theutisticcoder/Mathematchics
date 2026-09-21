@@ -160,7 +160,7 @@
         document.querySelector("select").onchange = (e) => {
             if (localStorage.getItem('swaps' + e.target.value)) {
                 swaps = parseInt(localStorage.getItem("swaps" + e.target.value));
-            } 
+            }
             document.querySelector("#swaps").innerHTML = "Swaps Left: " + swaps;
             document.querySelector("#set1").innerHTML = "<h1>Set 1</h1>";
             document.querySelector("#set2").innerHTML = "<h1>Set 2</h1>";
@@ -300,8 +300,15 @@
             document.querySelector("#sum2").innerHTML = s5 * 1000 + s6 * 100 + s7 * 10 + s8;
             swaps--;
             localStorage.setItem("swaps" + document.querySelector("select").value, swaps)
-            if(swaps === 0){
-                document.querySelectorAll("button").forEach(b=>b.disabled = true);
+            if (swaps === 0) {
+                document.querySelectorAll("button").forEach(b => b.disabled = true);
+                if (document.querySelector("#sum1").innerHTML != document.querySelector("#sum2").innerHTML) {
+                    document.querySelector("#sum1").style.backgroundColor = "red";
+                    document.querySelector("#sum2").style.backgroundColor = "red";
+                    document.querySelector("#sum1").style.color = "white";
+                    document.querySelector("#sum2").style.color = "white";
+
+                }
             }
             document.querySelector("#swaps").innerHTML = "Swaps Left: " + swaps;
             localStorage.setItem("moneypos" + document.querySelector("select").value, document.querySelector("#board").innerHTML)
