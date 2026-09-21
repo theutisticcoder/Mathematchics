@@ -134,10 +134,10 @@
         var count = 0;
         var val1, e1;
         var swaps = 0;
-        var date = new Date();
+        var date = new Date().toISOString().split("T")[0];
         date = date.toISOString().split("T")[0];
         let hash = 0;
-        Math.seedrandom(date) 
+        var rng = new Math.seedrandom(date) 
         document.querySelector("select").onchange = (e) => {
             swaps = 0;
             document.querySelector("#swaps").innerHTML = "Swaps: " + swaps;
@@ -211,7 +211,7 @@
                 }
                 console.log(hash)
                 
-                var result = Math.floor( Math.random()* (9 * 10 ** (16 * parseInt(e.target.value)))) + 10 ** (16 * parseInt(e.target.value))
+                var result = Math.floor( rng()* (9 * 10 ** (16 * parseInt(e.target.value)))) + 10 ** (16 * parseInt(e.target.value))
                 result = BigInt(result).toString();
                 console.log(result)
                 for (let i = 0; i < parseInt(e.target.value); i++) {
