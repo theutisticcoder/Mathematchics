@@ -136,7 +136,6 @@
         var swaps = 0;
         var date = new Date();
         date = date.toISOString().split("T")[0];
-        alert(date);
         var rng = new Math.seedrandom(date) 
         document.querySelector("select").onchange = (e) => {
             swaps = 0;
@@ -208,8 +207,8 @@
             else {
                 
                 
-                var result = Math.floor( rng()* (9 * 10 ** (16 * parseInt(e.target.value)))) + 10 ** (16 * parseInt(e.target.value))
-                result = BigInt(result).toString();
+                var result = BigInt(Math.floor( rng() * BigInt(9 * 10 ** (16 * parseInt(e.target.value)))) + BigInt(10 ** (16 * parseInt(e.target.value))))
+                result = result.toString();
                 console.log(result)
                 for (let i = 0; i < parseInt(e.target.value); i++) {
                     document.querySelector("#set1").innerHTML += "<button class='d1'>" + result.substring(i * 16, i * 16 + 1) + "</button>"
