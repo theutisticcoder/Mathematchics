@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pragmatchics - Math Game</title>
+    <meta name="google-site-verification" content="SmMGoN524KQqb8sFtxsRtrJh4jcQAUy_Ky1Lu4yg0As" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <link rel="favicon" href="Icon.png">
+    <link rel="icon" href="/Icon.png">
+</head>
+
+<body>
+    <style>
+        * {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        html {
+            background-color: lightblue;
+        }
+
+        button {
+            width: 45px;
+            border-radius: 20%;
+            color: navy;
+            font-size: xx-large;
+            background: lightblue;
+            border: 3px solid navy;
+        }
+
+        * {
+            border-radius: 10%;
+
+        }
+
+        #set1 {
+            text-align: center;
+            width: 50vw;
+            color: navy;
+            background: aliceblue;
+            border: 3px solid navy;
+            position: absolute;
+            border-radius: 10%;
+            top: 300px;
+            height: fit-content;
+        }
+
+        #sum1,
+        #sum2,
+        #swaps {
+            border: 3px solid navy;
+        }
+
+        #swaps {
+            text-align: center;
+            color: navy;
+        }
+
+        #set2 {
+            text-align: center;
+            position: absolute;
+            width: 50vw;
+            color: navy;
+            border-radius: 10%;
+            background: aliceblue;
+            border: 3px solid navy;
+            left: 50vw;
+            top: 300px;
+            height: fit-content;
+
+        }
+
+        #inst {
+            text-align: center;
+            width: 50vw;
+            height: 270px;
+            color: navy;
+            background: lightblue;
+            border: 3px solid navy;
+            overflow-x: auto;
+            left: 25vw;
+            position: absolute;
+            border-radius: 10%;
+        }
+
+        select {
+            height: fit-content;
+            color: navy;
+            background: lightblue;
+            border: 3px solid navy;
+            width: 40vw;
+            left: 30vw;
+            border-radius: 10%;
+        }
+
+        option {
+            height: fit-content;
+            color: navy;
+            background: lightblue;
+            border: 3px solid navy;
+            border-radius: 10%;
+        }
+        #board{
+            width: 100%;
+            position: relative;
+        }
+    </style>
+
+
+
+    <div id="game">
+        <div id="inst">
+            <h3> Instructions</h3>
+            <p> There are two sets of 4-digit numbers. Click any 2 single digits to swap them. Goal: make the sums the
+                same, while keeping both totals as low as possible. The more numbers the harder.
+            </p>
+            <select>
+                <option>Select A Level...</option>
+                <option class="8" value="8">8th Degree</option>
+                <option class="12" value="12">12th Degree</option>
+                <option class="16" value="16">16th Degree</option>
+            </select>
+            <h4 id="swaps">Swaps: 0</h4>
+
+        </div>
+        <div id="board">
+            <div id="set1">
+                <h1>Set 1</h1>
+            </div>
+            <div id="set2">
+                <h1>Set 2</h1>
+            </div><br>
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+        var count = 0;
+        var val1, e1;
+        var swaps = -1;
+        var date = new Date();
+        date = date.toLocaleDateString();
+        var rng = new Math.seedrandom(date)
+        if(localStorage.getItem('d') != date){
+            localStorage.clear();
+            localStorage.setItem("d", date)
+        }
+        document.querySelector("select").onchange = (e) => {
+            swaps = 0;
+            document.querySelector("#swaps").innerHTML = "Swaps: " + swaps;
+            document.querySelector("#set1").innerHTML = "<h1>Set 1</h1>";
+            document.querySelector("#set2").innerHTML = "<h1>Set 2</h1>";
+
+            if (localStorage.getItem("pos8") != undefined && localStorage.getItem("pos8") != "D" && e.target.value === "8") {
+                document.querySelector("#board").innerHTML = localStorage.getItem("pos8")
+                document.querySelectorAll("button").forEach(b => {
+                    b.onclick = (e) => {
+                        if (count === 0) {
+                            count++;
+                            val1 = e.target.innerHTML
+                            e1 = e.target;
+                        }
+                        else {
+                            count--;
+                            e1.innerHTML = e.target.innerHTML;
+                            e.target.innerHTML = val1;
+
+
+                            recount();
+                        }
+                    }
+                })
+            }
+            else if (localStorage.getItem("pos12") != undefined && localStorage.getItem("pos12") != "D" && e.target.value === "12") {
+                document.querySelector("#board").innerHTML = localStorage.getItem("pos12")
+                document.querySelectorAll("button").forEach(b => {
+                    b.onclick = (e) => {
+                        if (count === 0) {
+                            count++;
+                            val1 = e.target.innerHTML
+                            e1 = e.target;
+                        }
+                        else {
+                            count--;
+                            e1.innerHTML = e.target.innerHTML;
+                            e.target.innerHTML = val1;
+
+
+                            recount();
+                        }
+                    }
+                })
+            }
+
+            else if (localStorage.getItem("pos16") != undefined && localStorage.getItem("pos16") != "D" && e.target.value === "16") {
+                document.querySelector("#board").innerHTML = localStorage.getItem("pos16")
+                document.querySelectorAll("button").forEach(b => {
+                    b.onclick = (e) => {
+                        if (count === 0) {
+                            count++;
+                            val1 = e.target.innerHTML
+                            e1 = e.target;
+                        }
+                        else {
+                            count--;
+                            e1.innerHTML = e.target.innerHTML;
+                            e.target.innerHTML = val1;
+
+
+                            recount();
+                        }
+                    }
+                })
+            }
+            else {
+
+
+                var totalRange = 9n * 10n ** BigInt(16 * parseInt(e.target.value));
+                var result = ((totalRange * BigInt(Math.abs(rng.int32()))) / 2147483647n + 10n ** BigInt(16 * parseInt(e.target.value))).toString();
+                console.log(result)
+                for (let i = 0; i < parseInt(e.target.value); i++) {
+                    document.querySelector("#set1").innerHTML += "<button class='d1'>" + result.substring(i * 16, i * 16 + 1) + "</button>"
+                    document.querySelector("#set1").innerHTML += "<button class='d2'>" + result.substring(i * 16 + 2, i * 16 + 3) + "</button>"
+                    document.querySelector("#set1").innerHTML += "<button class='d3'>" + result.substring(i * 16 + 4, i * 16 + 5) + "</button>"
+                    document.querySelector("#set1").innerHTML += "<button class='d4'>" + result.substring(i * 16 + 6, i * 16 + 7) + "</button>"
+                    document.querySelector("#set1").innerHTML += "<br>"
+                    document.querySelector("#set2").innerHTML += "<button class='d5'>" + result.substring(i * 16 + 8, i * 16 + 9) + "</button>"
+                    document.querySelector("#set2").innerHTML += "<button class='d6'>" + result.substring(i * 16 + 10, i * 16 + 11) + "</button>"
+                    document.querySelector("#set2").innerHTML += "<button class='d7'>" + result.substring(i * 16 + 12, i * 16 + 13) + "</button>"
+                    document.querySelector("#set2").innerHTML += "<button class='d8'>" + result.substring(i * 16 + 14, i * 16 + 15) + "</button>"
+                    document.querySelector("#set2").innerHTML += "<br>"
+                }
+                document.querySelector("#set1").innerHTML += "<h1 id='sum1'></h1>"
+                document.querySelector("#set2").innerHTML += "<h1 id='sum2'></h1>"
+                document.querySelectorAll("button").forEach(b => {
+                    b.onclick = (e) => {
+                        if (count === 0) {
+                            count++;
+                            val1 = e.target.innerHTML
+                            e1 = e.target;
+                        }
+                        else {
+                            count--;
+                            e1.innerHTML = e.target.innerHTML;
+                            e.target.innerHTML = val1;
+
+
+                            recount();
+                        }
+                    }
+                })
+                setTimeout(recount, 200)
+            }
+        }
+
+        function recount() {
+            var s1 = 0, s2 = 0, s3 = 0, s4 = 0, s5 = 0, s6 = 0, s7 = 0, s8 = 0;
+            document.querySelectorAll(".d1").forEach((dig) => {
+                s1 += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".d2").forEach((dig) => {
+                s2 += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".d3").forEach((dig) => {
+                s3 += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".d4").forEach((dig) => {
+                s4 += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".d5").forEach((dig) => {
+                s5 += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".d6").forEach((dig) => {
+                s6 += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".d7").forEach((dig) => {
+                s7 += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".d8").forEach((dig) => {
+                s8 += parseInt(dig.innerHTML)
+            })
+
+            document.querySelector("#sum1").innerHTML = s1 * 1000 + s2 * 100 + s3 * 10 + s4;
+            document.querySelector("#sum2").innerHTML = s5 * 1000 + s6 * 100 + s7 * 10 + s8;
+            swaps++;
+            document.querySelector("#swaps").innerHTML = "Swaps: " + swaps;
+            localStorage.setItem("pos" + document.querySelector("select").value, document.querySelector("#board").innerHTML)
+
+        }
+    </script>
+</body>
+
+</html>
