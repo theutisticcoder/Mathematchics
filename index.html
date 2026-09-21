@@ -105,7 +105,8 @@
     <div id="game">
         <div id="inst">
             <h3> Instructions</h3>
-            <p> There are two sets of 4-digit numbers. Click any 2 single digits to swap them. Goal: make the sums the same, the more numbers the easier. Do as few swaps as possible.
+            <p> There are two sets of 4-digit numbers. Click any 2 single digits to swap them. Goal: make the sums the
+                same, the more numbers the easier. Do as few swaps as possible.
             </p>
             <select>
                 <option>Select A Level...</option>
@@ -117,14 +118,14 @@
 
         </div>
         <div id="board">
-        <div id="set1">
-            <h1>Set 1</h1>
+            <div id="set1">
+                <h1>Set 1</h1>
+            </div>
+            <div id="set2">
+                <h1>Set 2</h1>
+            </div><br>
         </div>
-        <div id="set2">
-            <h1>Set 2</h1>
-        </div><br>
-        </div>
-       
+
     </div>
 
 
@@ -136,7 +137,7 @@
         var swaps = 0;
         var date = new Date();
         date = date.toISOString().split("T")[0];
-        var rng = new Math.seedrandom(date) 
+        var rng = new Math.seedrandom(date)
         document.querySelector("select").onchange = (e) => {
             swaps = 0;
             document.querySelector("#swaps").innerHTML = "Swaps: " + swaps;
@@ -183,7 +184,7 @@
                     }
                 })
             }
-            
+
             else if (localStorage.getItem("pos16") != undefined && localStorage.getItem("pos16") != "D" && e.target.value === "16") {
                 document.querySelector("#board").innerHTML = localStorage.getItem("pos16")
                 document.querySelectorAll("button").forEach(b => {
@@ -205,10 +206,10 @@
                 })
             }
             else {
-                
-                
-                var result =  BigInt(Math.floor((Math.abs(rng.int32())/2147483647)) * Number(9n * 10n ** BigInt(16 * parseInt(e.target.value)))) + (10n ** BigInt(16 * parseInt(e.target.value)))
-                result = result.toString();
+
+
+                var totalRange = 9n * 10n ** BigInt(16 * parseInt(e.target.value));
+                var result = ((totalRange * BigInt(Math.abs(rng.int32()))) / 2147483647n + 10n ** BigInt(16 * parseInt(e.target.value))).toString();
                 console.log(result)
                 for (let i = 0; i < parseInt(e.target.value); i++) {
                     document.querySelector("#set1").innerHTML += "<button class='d1'>" + result.substring(i * 16, i * 16 + 1) + "</button>"
