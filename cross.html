@@ -249,10 +249,10 @@
             document.querySelectorAll(".r8").forEach((dig) => {
                 s8r += parseInt(dig.innerHTML)
             })
-            document.querySelector("#column1").innerHTML += "<p id='column1'>First 4 Columns:" +(s1 + s2 + s3 + s4)+"</p>"
-            document.querySelector("#column2").innerHTML += "<p id='column2'>Last 4 Columns:" +(s5 + s6 + s7 + s8)+"</p>"
-            document.querySelector("#row1").innerHTML += "<p id='row1'>First 4 Rows:"+ (s1r + s2r + s3r + s4r) + "</p>"
-            document.querySelector("#row2").innerHTML += "<p id='row2'>Last 4 Rows:" +(s5r + s6r + s7r + s8r)+"</p>"
+            document.querySelector("#column1").innerHTML = "<p id='column1'>First 4 Columns:" +(s1 + s2 + s3 + s4)+"</p>"
+            document.querySelector("#column2").innerHTML = "<p id='column2'>Last 4 Columns:" +(s5 + s6 + s7 + s8)+"</p>"
+            document.querySelector("#row1").innerHTML = "<p id='row1'>First 4 Rows:"+ (s1r + s2r + s3r + s4r) + "</p>"
+            document.querySelector("#row2").innerHTML = "<p id='row2'>Last 4 Rows:" +(s5r + s6r + s7r + s8r)+"</p>"
             swaps++;
             document.querySelector("#swaps").innerHTML = "Swaps: " + swaps;
             if (parseInt(document.querySelector("#column1").innerHTML) === document.querySelector("#column2").innerHTML && document.querySelector("#column1").innerHTML === document.querySelector("#row1").innerHTML && document.querySelector("#column1").innerHTML === document.querySelector("#row2").innerHTML ){
