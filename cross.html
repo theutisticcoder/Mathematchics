@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematchics - Math Game</title>
+    <meta name="google-site-verification" content="SmMGoN524KQqb8sFtxsRtrJh4jcQAUy_Ky1Lu4yg0As" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <link rel="favicon" href="Icon.png">
+    <link rel="icon" href="/Icon.png">
+</head>
+
+<body>
+    <style>
+        * {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        html {
+            background-color: lightblue;
+        }
+
+        button {
+            width: 45px;
+            border-radius: 20%;
+            color: navy;
+            font-size: xx-large;
+            background: lightblue;
+            border: 3px solid navy;
+        }
+
+        * {
+            border-radius: 10%;
+
+        }
+
+        #set1 {
+            text-align: center;
+            width: 100vw;
+            color: navy;
+            background: aliceblue;
+            border: 3px solid navy;
+            position: absolute;
+            border-radius: 10%;
+            top: 300px;
+            height: fit-content;
+        }
+
+        #sum1,
+        #sum2,
+        #swaps {
+            border: 3px solid navy;
+        }
+
+        #swaps {
+            text-align: center;
+            color: navy;
+        }
+
+      
+        #inst {
+            text-align: center;
+            width: 50vw;
+            height: 270px;
+            color: navy;
+            background: lightblue;
+            border: 3px solid navy;
+            overflow-x: auto;
+            left: 25vw;
+            position: absolute;
+            border-radius: 10%;
+        }
+
+        select {
+            height: fit-content;
+            color: navy;
+            background: lightblue;
+            border: 3px solid navy;
+            width: 40vw;
+            left: 30vw;
+            border-radius: 10%;
+        }
+
+        option {
+            height: fit-content;
+            color: navy;
+            background: lightblue;
+            border: 3px solid navy;
+            border-radius: 10%;
+        }
+
+        #board {
+            width: 100%;
+            position: relative;
+        }
+    </style>
+
+
+
+    <div id="game">
+        <div id="inst">
+            <h3> Instructions</h3>
+            <p> There is a set of 8 8-digit numbers. Click any 2 single digits to swap them. Goal: make the sums the
+                of the first 4 columns, the first 4 rows, the last 4 columns, and the last 4 rows the
+                same sum. Do as few swaps as possible.
+            </p>
+            <h4 id="swaps">Swaps: 0</h4>
+
+        </div>
+        <div id="board">
+            <div id="set1">
+                <h1>Set</h1>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+        var count = 0;
+        var val1, e1;
+        var swaps = -1;
+        var date = new Date();
+        date = date.toLocaleDateString();
+        var rng = new Math.seedrandom(date)
+        if (localStorage.getItem('d') != date) {
+            localStorage.clear();
+            localStorage.setItem("d", date)
+        }
+        window.onload = () => {
+            swaps = 0;
+            document.querySelector("#swaps").innerHTML = "Swaps: " + swaps;
+            document.querySelector("#set1").innerHTML = "<h1>Set</h1>";
+
+            if (localStorage.getItem("cross") != undefined) {
+                document.querySelector("#board").innerHTML = localStorage.getItem("cross")
+                document.querySelectorAll("button").forEach(b => {
+                    b.onclick = (e) => {
+                        if (count === 0) {
+                            count++;
+                            val1 = e.target.innerHTML
+                            e1 = e.target;
+                        }
+                        else {
+                            count--;
+                            e1.innerHTML = e.target.innerHTML;
+                            e.target.innerHTML = val1;
+
+
+                            recount();
+                        }
+                    }
+                })
+            }
+            else {
+
+
+                var totalRange = 9n * 10n ** BigInt(16 * 8);
+                var result = ((totalRange * BigInt(Math.abs(rng.int32()))) / 2147483647n + 10n ** BigInt(16 * 8)).toString();
+                console.log(result)
+                for (let i = 0; i < 8; i++) {
+                    document.querySelector("#set1").innerHTML += "<button class='d1 r"+ i +"'>" + result.substring(i * 16, i * 16 + 1) + "</button>"
+                    document.querySelector("#set1").innerHTML += "<button class='d2 r"+ i +"'>" + result.substring(i * 16 + 2, i * 16 + 3) + "</button>"
+                    document.querySelector("#set1").innerHTML += "<button class='d3 r"+ i +"'>" + result.substring(i * 16 + 4, i * 16 + 5) + "</button>"
+                    document.querySelector("#set1").innerHTML += "<button class='d4 r"+ i +"'>" + result.substring(i * 16 + 6, i * 16 + 7) + "</button>"
+                    document.querySelector("#set1").innerHTML += "<button class='d5 r"+ i +"'>" + result.substring(i * 16 + 8, i * 16 + 9) + "</button>"
+                    document.querySelector("#set1").innerHTML += "<button class='d6 r"+ i +"'>" + result.substring(i * 16 + 10, i * 16 + 11) + "</button>"
+                    document.querySelector("#set1").innerHTML += "<button class='d7 r"+ i +"'>" + result.substring(i * 16 + 12, i * 16 + 13) + "</button>"
+                    document.querySelector("#set1").innerHTML += "<button class='d8 r"+ i +"'>" + result.substring(i * 16 + 14, i * 16 + 15) + "</button>"
+                    document.querySelector("#set1").innerHTML += "<br>"
+                }
+                document.querySelector("#inst").innerHTML += "<p id='column1'>First 4 Columns:</p>"
+                document.querySelector("#inst").innerHTML += "<p id='column2'>Last 4 Columns:</p>"
+                document.querySelector("#inst").innerHTML += "<p id='row1'>First 4 Rows:</p>"
+                document.querySelector("#inst").innerHTML += "<p id='row2'>Last 4 Rows:</p>"
+                document.querySelectorAll("button").forEach(b => {
+                    b.onclick = (e) => {
+                        if (count === 0) {
+                            count++;
+                            val1 = e.target.innerHTML
+                            e1 = e.target;
+                        }
+                        else {
+                            count--;
+                            e1.innerHTML = e.target.innerHTML;
+                            e.target.innerHTML = val1;
+
+
+                            recount();
+                        }
+                    }
+                })
+                setTimeout(recount, 200)
+            }
+        }
+
+        function recount() {
+            var s1 = 0, s2 = 0, s3 = 0, s4 = 0, s5 = 0, s6 = 0, s7 = 0, s8 = 0;
+            var s1r = 0, s2r = 0, s3r = 0, s4r = 0, s5r = 0, s6r = 0, s7r = 0, s8r = 0
+            document.querySelectorAll(".d1").forEach((dig) => {
+                s1 += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".d2").forEach((dig) => {
+                s2 += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".d3").forEach((dig) => {
+                s3 += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".d4").forEach((dig) => {
+                s4 += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".d5").forEach((dig) => {
+                s5 += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".d6").forEach((dig) => {
+                s6 += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".d7").forEach((dig) => {
+                s7 += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".d8").forEach((dig) => {
+                s8 += parseInt(dig.innerHTML)
+            })
+
+             document.querySelectorAll(".r1").forEach((dig) => {
+                s1r += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".r2").forEach((dig) => {
+                s2r += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".r3").forEach((dig) => {
+                s3r += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".r4").forEach((dig) => {
+                s4r += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".r5").forEach((dig) => {
+                s5r += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".r6").forEach((dig) => {
+                s6r += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".r7").forEach((dig) => {
+                s7r += parseInt(dig.innerHTML)
+            })
+            document.querySelectorAll(".r8").forEach((dig) => {
+                s8r += parseInt(dig.innerHTML)
+            })
+            document.querySelector("#column1").innerHTML += "<p id='column1'>First 4 Columns:" +(s1 + s2 + s3 + s4)+"</p>"
+            document.querySelector("#column2").innerHTML += "<p id='column2'>Last 4 Columns:" +(s5 + s6 + s7 + s8)+"</p>"
+            document.querySelector("#row1").innerHTML += "<p id='row1'>First 4 Rows:"+ (s1r + s2r + s3r + s4r) + "</p>"
+            document.querySelector("#row2").innerHTML += "<p id='row2'>Last 4 Rows:" +(s5r + s6r + s7r + s8r)+"</p>"
+            swaps++;
+            document.querySelector("#swaps").innerHTML = "Swaps: " + swaps;
+            if (parseInt(document.querySelector("#column1").innerHTML) === document.querySelector("#column2").innerHTML && document.querySelector("#column1").innerHTML === document.querySelector("#row1").innerHTML && document.querySelector("#column1").innerHTML === document.querySelector("#row2").innerHTML ){
+                document.querySelector("#row1").style.backgroundColor = "green";
+                document.querySelector("#row1").style.color = "white";
+                document.querySelector("#row2").style.backgroundColor = "green";
+                document.querySelector("#row2").style.color = "white";
+                document.querySelector("#column1").style.backgroundColor = "green";
+                document.querySelector("#column1").style.color = "white";
+                document.querySelector("#column2").style.backgroundColor = "green";
+                document.querySelector("#column2").style.color = "white";
+                document.querySelectorAll("button").forEach(b => b.disabled = true)
+            }
+            localStorage.setItem("cross", document.querySelector("#board").innerHTML)
+
+        }
+    </script>
+</body>
+
+</html>
