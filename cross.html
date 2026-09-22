@@ -172,10 +172,10 @@
                     document.querySelector("#set1").innerHTML += "<button class='d8 r"+ i +"'>" + result.substring(i * 16 + 14, i * 16 + 15) + "</button>"
                     document.querySelector("#set1").innerHTML += "<br>"
                 }
-                document.querySelector("#board").innerHTML += "<p id='column1'>First 4 Columns:</p>"
-                document.querySelector("#board").innerHTML += "<p id='column2'>Last 4 Columns:</p>"
-                document.querySelector("#board").innerHTML += "<p id='row1'>First 4 Rows:</p>"
-                document.querySelector("#board").innerHTML += "<p id='row2'>Last 4 Rows:</p>"
+                document.querySelector("#set1").innerHTML += "<p id='column1'>First 4 Columns:</p>"
+                document.querySelector("#set1").innerHTML += "<p id='column2'>Last 4 Columns:</p>"
+                document.querySelector("#set1").innerHTML += "<p id='row1'>First 4 Rows:</p>"
+                document.querySelector("#set1").innerHTML += "<p id='row2'>Last 4 Rows:</p>"
                 document.querySelectorAll("button").forEach(b => {
                     b.onclick = (e) => {
                         if (count === 0) {
